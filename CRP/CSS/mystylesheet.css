@@ -1,0 +1,55 @@
+html{
+	font-size: 15px;
+}
+
+
+body{
+	background: #614051;
+	padding: 10px;
+}
+
+
+._head{
+	padding-top: 10px;
+	font-weight: bolder;
+	font-family: Castellar;
+	text-align: center;
+
+}
+
+
+
+._container{
+	background: #e0b0ff;
+	border-radius: 20px;
+	padding: 20px;
+}
+._dividers{
+	background: white;
+	border: 3px #614051 solid;
+	border-radius: 10px;
+	padding: 15px;
+}
+._text_header{
+	background:#614051;
+	padding: 3px;
+	margin-bottom: 10px;
+	height:30px;
+	color:white;
+	text-align: center;
+	font-weight: bold;
+}
+
+._menubar{
+	background:#614051;
+	padding: 3px;
+	font-weight: bold;
+	border-radius: 10px;
+	margin: 10px 10px 20px 10px;
+}
+
+.nav-link{
+	color:white !important;
+	margin: 5px !important;
+}
+

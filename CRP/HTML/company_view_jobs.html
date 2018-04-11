@@ -1,0 +1,209 @@
+<?php
+require '../PHP/company_view_jobs.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../CSS/mystylesheet.css">
+<link rel="stylesheet" href="../FONTS/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container-fluid _container ">
+<div class=" _head">
+    <div class="col-12 d-none d-lg-block">
+        <h1 class="font-weight-bold"><span class="display-4">C</span>AMPUS <span class="display-4">R</span>ECRUITMENT <span class="display-4">P</span>ORTAL</h1>
+    </div>
+    <div class="col-12 d-none d-md-block d-lg-none">
+        <h2 class="font-weight-bold"><span class="h1">C</span>AMPUS <span class="h1">R</span>ECRUITMENT <span class="h1">P</span>ORTAL</h2>
+    </div>
+    <div class="col-12 d-block d-md-none">
+        <h3 class="font-weight-bold"><span class="h2">C</span>AMPUS <span class="h2">R</span>ECRUITMENT <span class="h2">P</span>ORTAL</h3>
+    </div>
+</div>
+<div class="_menubar row ">
+    <nav class="navbar navbar-expand-md navbar-dark col-10">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav nav-tab nav-justified col-10 col-md-6">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link"> <i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+   <div class="dropdown col-2 col-md-1 mt-2 m-md-auto list-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item "><a href="company_home.html"><?php if(isset($_SESSION['fullname'])){echo $_SESSION['fullname'];}?></a></li>
+            <li class="dropdown-item "><a href="company_profile.html">View Profile</a></li>
+            <li class="dropdown-item "><a href="company_view_jobs.html">View Posted Jobs</a></li>
+            <li class="dropdown-item "><a href="company_post_job.html">Post Job</a></li>
+            <li class="dropdown-item "><a href="company_settings.html">Settings</a></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item "><a href="../PHP/logout.php">Log Out</a></li>  
+        </ul>
+
+    </div>
+</div>
+
+<div class="container col-10 mx-auto">
+    <div class="_text_header">JOBS</div>
+    <div class="container">
+        <?php 
+        if($_SESSION['del_check'] == 1)
+        {
+            echo "
+                <div class=\"row alert alert-warning col-8 mx-auto px-auto\" style=\"font-size:18px\">
+                    <span class=\"\">Are you sure you want to delete this post?</span>
+                    <form action=\"../PHP/company_view_jobs.php\" method=\"POST\">
+                    <span class=\"col-3\"><input type=\"submit\" value=\"Yes, Delete it\" name=\"confirm_delete\" class=\"btn btn-danger\" style=\"margin:2px\"></span>
+                    <span class=\"col-3\"><input type=\"submit\" value=\"Cancel\" name=\"reject_delete\" class=\"btn btn-warning\" style=\"margin:2px\"></span>
+                    </form>
+                </div>
+                ";
+        }
+        ?>
+        <div class="text-center">
+            <?php
+            
+            $n = get_no_fields_for('jobs','username',$_SESSION['username'],'j_id');
+            if($n > 0)
+            {
+                /*$view = get_all_fields_for('jobs','username',$_SESSION['username']);*/
+                $view_username = $_SESSION['username'];
+                
+                $view = $db->query("SELECT * FROM jobs WHERE username = '$view_username' ORDER BY posted_on DESC");
+                $view = $view->fetch_all();
+                foreach ($view as $key) 
+                {
+                $view_j_id = $key[0];
+                $view_j_type = $key[1];
+                $view_j_desc= $key[8];
+                $view_req_skills= $key[2];
+                $view_qualifications= $key[3];
+                $view_req_hsc= $key[4];
+                $view_req_isc= $key[5];
+                $view_req_cgpa= $key[6];
+                $view_hr_name= $key[10];
+                $view_hr_phn= $key[11];
+                $view_salary= $key[7];
+                $view_ldta= $key[9]; 
+                $btn_j_id1 = 'view_appl'.$view_j_id;
+                $btn_j_id2 = 'edit'.$view_j_id;
+                $btn_j_id3 = 'delete'.$view_j_id;
+                echo "<div class=\"card text-center mx-auto col-md-8\" style=\"margin-bottom:10px;box-shadow:2px 2px grey;\">
+                        <h5><i><b><br>$view_j_type</br></b></i></h5>
+                        <div>
+                            $view_j_desc
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                Required Skills:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                $view_req_skills
+                            </span>
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                Qualifications:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                $view_qualifications
+                            </span>
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                Required Percentage:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                HSC : $view_req_hsc<br>
+                                ISC : $view_req_isc<br>
+                                CGPA : $view_req_cgpa    
+                            </span>
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                HR:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                $view_hr_name
+                            </span>
+                             <span class=\"col-5 col-sm-4\">
+                                
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                <i class=\"fa fa-phone\"></i>  $view_hr_phn 
+                            </span>
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                Salary:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                $view_salary 
+                            </span>
+                        </div>
+                        <hr>
+                        <div class=\"row\">
+                            <span class=\"col-5 col-sm-4 font-weight-bold\">
+                                Last date:
+                            </span>
+                            <span class=\"col-7 col-sm-7 text-left\">
+                                $view_ldta 
+                            </span>
+                        </div>
+                        <br>
+                        <form action=\"../PHP/company_view_jobs.php\" method=\"POST\">
+                        <button class=\"btn btn-outline-primary\" style=\"color:black\" name=\"$btn_j_id1\">View Applicants</button>
+                        <button class=\"btn btn-outline-secondary\" style=\"color:black\" name=\"$btn_j_id2\">Edit this post</button>
+                        <button class=\"btn btn-outline-danger\" style=\"color:black\" name=\"$btn_j_id3\">Delete this post</button>
+                        
+                        </form>
+                        </br>
+                        </div>
+                    ";
+                }
+            }
+            else
+            {
+                echo "<div class=\"_detail_box text-center\">NO results found</div>";
+            }
+        ?>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+    <!-- Optional JavaScript -->
+    
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

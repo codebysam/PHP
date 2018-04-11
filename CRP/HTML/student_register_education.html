@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css" href="../CSS/mystylesheet.css">
+<link rel="stylesheet" href="../FONTS/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container-fluid _container ">
+<div class=" _head">
+    <div class="col-12 d-none d-lg-block">
+        <h1 class="font-weight-bold"><span class="display-4">C</span>AMPUS <span class="display-4">R</span>ECRUITMENT <span class="display-4">P</span>ORTAL</h1>
+    </div>
+    <div class="col-12 d-none d-md-block d-lg-none">
+        <h2 class="font-weight-bold"><span class="h1">C</span>AMPUS <span class="h1">R</span>ECRUITMENT <span class="h1">P</span>ORTAL</h2>
+    </div>
+    <div class="col-12 d-block d-md-none">
+        <h3 class="font-weight-bold"><span class="h2">C</span>AMPUS <span class="h2">R</span>ECRUITMENT <span class="h2">P</span>ORTAL</h3>
+    </div>
+</div>
+<div class="_menubar row ">
+    <nav class="navbar navbar-expand-md navbar-dark col-10">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav nav-tab nav-justified col-10 col-md-6">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link"> <i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="dropdown col-2 col-md-1 mt-2 m-md-auto list-group">
+        <button class="btn dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item "><a href="student_home.html"><?php if(isset($_SESSION['fullname'])){echo $_SESSION['fullname'];}?></a></li>
+            <li class="dropdown-item "><a href="student_profile.html">View Profile</a></li>
+            <li class="dropdown-item "><a href="student_display_jobs.html">Recent Jobs</a></li>
+            <li class="dropdown-item "><a href="student_applied_jobs.html">Jobs applied </a></li>
+            <li class="dropdown-item "><a href="student_settings.html">Settings</a></li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item "><a href="../PHP/logout.php">Log Out</a></li>  
+        </ul>
+
+    </div>
+</div>
+
+<div class="_dividers container col-10 m-auto">
+    <div class="_text_header">EDUCTIONAL & ACADEMIC</div>
+    <form action="../PHP/student_register_education.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">College</label>
+                    <input type="text" name="college" class="form-control col-7" value="<?php if(isset($edu_college)){echo $edu_college;} ?>" required>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">Registration No:</label>
+                    <input type="text" name="reg_no" class="form-control col-7" value="<?php if(isset($edu_reg_no)){echo $edu_reg_no;} ?>" required>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">Branch:</label>
+                    <input type="text" name="branch" class="form-control col-7" value="<?php if(isset($edu_branch)){echo $edu_branch;} ?>" required>
+                </div>
+                 <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">Session:</label>
+                    <input type="text" name="session" class="form-control col-7" value="<?php if(isset($edu_session)){echo $edu_session;} ?>" required>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">HSC:</label>
+                    <input type="text" name="HSC" class="form-control col-7" value="<?php if(isset($edu_HSC)){echo $edu_HSC;} ?>" required>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">ISC:</label>
+                    <input type="text" name="ISC" class="form-control col-7" value="<?php if(isset($edu_ISC)){echo $edu_ISC;} ?>" required>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">CGPA:</label>
+                    <input type="text" name="CGPA" class="form-control col-7" value="<?php if(isset($edu_CGPA)){echo $edu_CGPA;} ?>" required>
+                </div>
+                 <div class="form-group form-group-sm form-inline">
+                    <label class="col-5">Skills:</label>
+                    <textarea name="skills" class="form-control col-7" required><?php if(isset($edu_skills)){echo $edu_skills;} ?></textarea>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-5">CV</label>
+                    <input type="file" name="cv" class="form-control col-7">
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <input type="submit" value="Submit" class="btn btn-primary col-3">
+                </div>
+        </form>
+
+</div>
+
+    <!-- Optional JavaScript -->
+    
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

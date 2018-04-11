@@ -1,0 +1,129 @@
+<?php
+	require '../PHP/company_register.php';
+  if(isset($_SESSION['creg_error']))
+  {
+      $creg_error =  $_SESSION['creg_error'];
+      unset($_SESSION['creg_error']);
+  }
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+   	<!-- Custom CSS -->
+  	<link rel="stylesheet" type="text/css" href="../CSS/mystylesheet.css">
+  	<link rel="stylesheet" href="../FONTS/css/font-awesome.min.css">
+</head>
+<body>
+	
+<div class="container-fluid _container ">
+  	<div class=" _head">
+  		<div class="col-12 d-none d-lg-block">
+   			<h1 class="font-weight-bold"><span class="display-4">C</span>AMPUS <span class="display-4">R</span>ECRUITMENT <span class="display-4">P</span>ORTAL</h1>
+   		</div>
+   		<div class="col-12 d-none d-md-block d-lg-none">
+   			<h2 class="font-weight-bold"><span class="h1">C</span>AMPUS <span class="h1">R</span>ECRUITMENT <span class="h1">P</span>ORTAL</h2>
+   		</div>
+   		<div class="col-12 d-block d-md-none">
+   			<h3 class="font-weight-bold"><span class="h2">C</span>AMPUS <span class="h2">R</span>ECRUITMENT <span class="h2">P</span>ORTAL</h3>
+   		</div>
+	</div>
+	<div class="_menubar">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav nav-tab nav-justified col-12 col-md-6">
+					<li class="nav-item">
+						<a href="home.html" class="nav-link"> <i class="fa fa-home"></i> Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">About</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">Contact</a>
+					</li>
+				</ul>
+			</div>
+			
+		</nav>
+	</div>
+	<div class="_dividers container col-10 col-md-8 col-lg-6 m-auto">
+		<div class="_text_header">REGISTRATION FORM</div>
+            <form action="../PHP/company_register.php" method="POST" enctype="multipart/form-data">
+                <br>
+                <div class="form-group form-inline">
+                    <label class="col-4">Username :</label>
+                    <input type="text" name="username" class="form-control form-control-sm col-7" value="<?php if(isset($creg_username)){echo $creg_username;}?>" required/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Password :</label>
+                    <input type="password" name="password" class="form-control form-control-sm col-7" required/>
+                </div>
+                <div class="form-group form-inline">
+                <label class="col-4">Re-enter Password :</label>
+                <input type="password" name="repassword" class="form-control form-control-sm col-7" required/>
+                </div>
+
+                <div class="form-group form-inline">
+                    <label class="col-4">Profile pic :</label>
+                    <input type="file" name="pro_pic" class="form-control form-control-sm col-7"/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Full Name :</label>
+                    <input type="text" name="fullname" class="form-control form-control-sm col-7" value="<?php if(isset($creg_fullname)){echo $creg_fullname;}?>" required/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Estabilished on:</label>
+                    <input type="text" name="estd" class="form-control form-control-sm col-7" value="<?php if(isset($creg_estd)){echo $creg_estd;}?>" placeholder="yyyy" required/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Phone No. :</label>
+                    <input type="text" name="ph_no" class="form-control form-control-sm col-7" value="<?php if(isset($creg_ph_no)){echo $creg_ph_no;}?>" required/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Website:</label>
+                    <input type="url" name="url" class="form-control form-control-sm col-7" value="<?php if(isset($creg_url)){echo $creg_url;}?>" required/>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="col-4">Email :</label>
+                    <input type="email" name="email" class="form-control form-control-sm col-7" value="<?php if(isset($creg_email)){echo $creg_email;}?>" required/>
+                </div>
+                <div class="form-group form-group-sm form-inline">
+	                <label class="col-4">Address:</label>
+	                <input type="text" name="area" class="form-control form-control-sm col-7" placeholder="Area"required>
+	                <br><br>
+	                <label class="col-4"></label>
+	                <input type="text" name="city" class="form-control form-control-sm col-7" placeholder="City" required>
+	                <br><br>
+	                <label class="col-4"></label> 
+	                <input type="text" name="state" class="form-control form-control-sm col-7" placeholder="State" required>
+	                <br><br>
+	                <label class="col-4"></label> 
+	                <input type="text" name="country" class="form-control form-control-sm col-7" placeholder="Country"required>
+	                <br><br>
+	                <label class="col-4"></label> 
+	                <input type="text" name="pin" class="form-control form-control-sm col-7" placeholder="Pin"required>
+	            </div>
+                <div class="text-center"><?php if(isset($creg_error)){echo "$creg_error<br><br>";}?></div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <input type="submit" value="submit" class="btn btn-primary col-3"/>
+                </div>
+            </form>
+         </div>
+	</div>
+</div>
+ 	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+</html>

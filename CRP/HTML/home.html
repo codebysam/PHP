@@ -1,0 +1,109 @@
+<?php
+require '../PHP/home.php';
+if(isset($_SESSION['home_error']))
+{
+	$home_error = $_SESSION['home_error'];
+	unset($_SESSION['home_error']);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+   	<!-- Custom CSS -->
+  	<link rel="stylesheet" type="text/css" href="../CSS/mystylesheet.css">
+  	<link rel="stylesheet" href="../FONTS/css/font-awesome.min.css">
+</head>
+<body>
+	
+<div class="container-fluid _container ">
+  	<div class=" _head">
+  		<div class="col-12 d-none d-lg-block">
+   			<h1 class="font-weight-bold"><span class="display-4">C</span>AMPUS <span class="display-4">R</span>ECRUITMENT <span class="display-4">P</span>ORTAL</h1>
+   		</div>
+   		<div class="col-12 d-none d-md-block d-lg-none">
+   			<h2 class="font-weight-bold"><span class="h1">C</span>AMPUS <span class="h1">R</span>ECRUITMENT <span class="h1">P</span>ORTAL</h2>
+   		</div>
+   		<div class="col-12 d-block d-md-none">
+   			<h3 class="font-weight-bold"><span class="h2">C</span>AMPUS <span class="h2">R</span>ECRUITMENT <span class="h2">P</span>ORTAL</h3>
+   		</div>
+	</div>
+	<div class="_menubar">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				 <span class="navbar-toggler-icon"></span>
+			 </button>
+			 <div class="collapse navbar-collapse" id="navbarCollapse">
+				 <ul class="navbar-nav nav-tab nav-justified col-12 col-md-6">
+					<li class="nav-item">
+						<a href="home.html" class="nav-link"> <i class="fa fa-home"></i> Home</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">About</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link">Contact</a>
+					</li>
+				 </ul>
+			 </div>
+			 
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-lg-9 order-lg-1 d-none d-lg-block" style="padding:10px">
+			<div class="_dividers">
+				<img src="../MEDIA/homepic.png" alt="" class="img-fluid"/>
+			</div>
+		</div>
+		<div class="col-lg-3 col-7 col-md-5 m-auto" style="padding:10px">
+			<div class="_dividers">
+				<div class="_text_header rounded">LOGIN HERE</div>
+				<form action="../PHP/home.php" method="POST">
+					<div class="form-group">
+						<select class="form-control" type="list" name="usertype" >
+							<option value="none">--Select Usertype--</option>
+							<option value="student_user">Student</option>
+							<option value="company_user">Company</option>
+							<option value="admin_user">Admin</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="username" placeholder="Username" required/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="password" name="password" placeholder="Password" required/>
+					</div>
+				<?php if(isset($home_error)){echo "$home_error<br>";}?>
+				<input type="submit" value="Login" class="btn btn-primary col-sm-12" style="margin:5px auto 3px auto"/>
+				</form>
+				<div class="text-center">
+					<a href="recover_password.html" >Forgot password?</a>
+				</div>
+				<div class="text-center m-auto">
+					Not a user? Register Now
+					<div class="btn-group btn-group-sm">
+						<a href="student_register.html" class="btn btn-outline-primary">as a Student</a>
+						<a href="company_register.html" class="btn btn-outline-primary">as a Company</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+</html>
