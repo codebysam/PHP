@@ -110,4 +110,4 @@ CREATE TABLE applied
 ## Running the application
 	  - Clone the CRP and paste it inside C:\xampp\htdocs
     - Start the xampp server from the xampp control panel
-	  - You can view the application @ [http://localhost/CRP/HTML/home.html](http://localhost/CRP/HTML/home.html)
+	  - You can view the application @ [http://localhost/CRP/HTML/home.html]
